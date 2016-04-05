@@ -2,100 +2,30 @@
 layout:     post
 title:      Launch a PS script from a batch file
 date:       2015-04-05 12:58:58
-summary:    See what the different elements looks like.
+summary:    Launch a PS script from a batch file.
 categories: powershell
 thumbnail:  cogs
 tags:       powershell script batch
 ---
 
-**Note** - This article is a derivative of ["See pixyll in action"][1], taken from the lovely jekyll theme [pixyll][4].
+Add the following to the project file
 
-All links are easy to [locate and discern](#), yet don't detract from the harmony
-of a paragraph. The _same_ goes for italics and __bold__ elements. Even the the strikeout
-works if <del>for some reason you need to update your post</del>. For consistency's sake,
-<ins>The same goes for insertions</ins>, of course.
-
-### Code, with syntax highlighting
-
-Code blocks use the [peppermint][2] theme.
-
-````ruby
-class Awesome < ActiveRecord::Base
-  include EvenMoreAwesome
-
-  validates_presence_of :something
-  validates :email, email_format: true
-
-  def initialize(email, name = nil)
-    self.email = email
-    self.name = name
-  end
-end
+```powershell
+@echo off
+PowerShell -NoProfile -ExecutionPolicy Bypass -Command "& '%~dpn0.ps1'"
 ```
 
-```html
-<!DOCTYPE html>
-<title>Title</title>
+This expects a .ps1 file to be in the same directory as the batch file, with the same base file name.
 
-<style>body {width: 500px;}</style>
+It's probably also handy to add the following to the Powershell script, so that errors or messages are visible.
 
-<script type="application/javascript">
-  function $init() {return true;}
-</script>
-
-<body>
-  <p checked class="title" id='title'>Title</p>
-  <!-- here goes the rest of the page -->
-</body>
+```powershell
+# If running in the console, wait for input before closing.
+if ($Host.Name -eq "ConsoleHost")
+{ 
+    Write-Host "Press any key to continue..."
+    # Make sure buffered input doesn't "press a key" and skip the ReadKey().
+    $Host.UI.RawUI.FlushInputBuffer()
+    $Host.UI.RawUI.ReadKey("NoEcho,IncludeKeyUp") > $null
+}
 ```
-
-# Headings!
-
-They're responsive, and well-proportioned (in `padding`, `line-height`, `margin`, and `font-size`).
-
-##### They draw the perfect amount of attention
-
-This allows your content to have the proper informational and contextual hierarchy. Yay.
-
-### There are lists, too
-
-  * Apples
-  * Oranges
-  * Potatoes
-  * Milk
-
-  1. Mow the lawn
-  2. Feed the dog
-  3. Dance
-
-### Images look great, too
-
-![Thumper](http://i.imgur.com/DMCHDqF.jpg)
-
-
-### Stylish blockquotes included
-
-You can use the markdown quote syntax, `>` for simple quotes.
-
-> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse quis porta mauris.
-
-### LaTeX support
-
-The default math delimiters are \$\$. Hence `$$ E = m \cdot c^2 $$` yields $$ E = m \cdot c^2 $$
-
-And here's something more fancy:
-
-$$ \zeta(s) = \frac{1}{\Gamma(s)} \int \limits_0^\infty x^{s-1} \sum_{n=1}^\infty e^{-nx} \mathrm{d}x = \frac{1}{\Gamma(s)} \int \limits_0^\infty \frac{x^{s-1}}{e^x - 1} \mathrm{d}x $$
-
-
-### There's more being added all the time
-
-Checkout the [Github repository][3] to request,
-or add, features.
-
-Happy writing.
-
-[1]: http://pixyll.com/jekyll/pixyll/2014/06/10/see-pixyll-in-action/
-[2]: https://noahfrederick.com/log/lion-terminal-theme-peppermint/
-[3]: https://github.com/jacobtomlinson/carte-noire
-[4]: http://pixyll.com/
