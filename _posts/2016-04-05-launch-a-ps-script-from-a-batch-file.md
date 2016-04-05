@@ -1,7 +1,7 @@
 ---
 layout:     post
 title:      Launch a PS script from a batch file
-date:       2015-04-05 12:58:58
+date:       2016-04-05 12:58 +1300
 summary:    Launch a PS script from a batch file.
 categories: powershell
 thumbnail:  cogs
