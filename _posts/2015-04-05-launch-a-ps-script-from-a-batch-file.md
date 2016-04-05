@@ -1,15 +1,11 @@
 ---
 layout:     post
-title:      Carte Noire in Action
-date:       2014-06-10 12:31:19
+title:      Launch a PS script from a batch file
+date:       2015-04-05 12:58:58
 summary:    See what the different elements looks like.
-categories: jekyll
-thumbnail: cogs
-tags:
- - demo
- - action
- - carte
- - noire
+categories: powershell
+thumbnail:  cogs
+tags:       powershell script batch
 ---
 
 **Note** - This article is a derivative of ["See pixyll in action"][1], taken from the lovely jekyll theme [pixyll][4].
@@ -23,7 +19,7 @@ works if <del>for some reason you need to update your post</del>. For consistenc
 
 Code blocks use the [peppermint][2] theme.
 
-{% highlight ruby %}
+````ruby
 class Awesome < ActiveRecord::Base
   include EvenMoreAwesome
 
@@ -35,7 +31,7 @@ class Awesome < ActiveRecord::Base
     self.name = name
   end
 end
-{% endhighlight %}
+```
 
 ```html
 <!DOCTYPE html>
