@@ -4,7 +4,7 @@ title:      Embedded DLLs as resources
 date:       2016-04-02 23:35 +1300
 summary:    Embedding references as resources so that you get a single file executable.
 categories: c#
-thumbnail:  cogs
+thumbnail:  code
 tags:       c# resources
 ---
 
@@ -20,7 +20,7 @@ In the project file:
 <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 <Target Name="AfterResolveReferences">
   <ItemGroup>
-    <EmbeddedResource 
+    <EmbeddedResource S
         Include="@(ReferenceCopyLocalPaths)" 
         Condition="'%(ReferenceCopyLocalPaths.Extension)' == '.dll'">
       <LogicalName>%(ReferenceCopyLocalPaths.DestinationSubDirectory)%(ReferenceCopyLocalPaths.Filename)%(ReferenceCopyLocalPaths.Extension)</LogicalName>
